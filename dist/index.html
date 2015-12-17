@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="addressBook">
+<head lang="en">
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/detail.css">
+
+  <title>Address Book</title>
+</head>
+<body ng-controller="ContactCtrl">
+
+<button class="button contact__new" ui-sref="new">Create New Contact</button>
+
+<div ui-view=""></div>
+
+  <!-- vendor scripts -->
+  <script src="angular.js"></script>
+  <script src="angular-local-storage.js"></script>
+  <script src="angular-ui-router.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js"></script>
+
+  <!-- app scripts -->
+  <script src="app.module.js"></script>
+  <script type="text/javascript" src="js/controllers/main.js"></script>
+</body>

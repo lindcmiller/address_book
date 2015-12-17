@@ -1,0 +1,21 @@
+<!-- Must be grouped by letter of first name -->
+<div ui-view>
+
+  <h1>LIST</h1>
+
+  <!-- <div ng-repeat="letter in alphabet" class="alphabetical-order"> -->
+  <div>
+    <ul ng-repeat="contact in contacts">
+      <!-- Must be ordered by first name -->
+      <li class="name-first">{{ contact.name.first }}</li>
+      <li class="name-last">{{ contact.name.last }}</li>
+
+      <!-- Must be able to edit and delete a contact -->
+
+      <button class="button contact__edit" ng-submit="editContact(contact)" ui-sref="edit">Edit</button>
+      <button class="button contact__delete" ng-submit="deleteContact(contact)">Delete</button>
+    </ul>
+
+  </div>
+
+</div>

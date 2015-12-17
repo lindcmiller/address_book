@@ -1,0 +1,54 @@
+<div ui-view>
+
+  <a ui-sref="list"><< Return to Contacts</a>
+
+  <h1>DETAILS</h1>
+
+  <div class="name-first">{{ contact.name.last }}</div>
+  <div class="name-last">{{ contact.name.last }}</div>
+
+  <h5>Business</h5>
+  <div class="business">
+    <div class="business__name">{{ contact.addresses.business.name }}</div>
+
+    <div class="business__phone">{{ contact.addresses.business.phone }}</div>
+    <div class="business__url">{{ contact.addresses.business.url }}</div>
+
+    <ul class="business__address">
+      <li>{{ contact.addresses.business.location.line1 }}</li>
+      <li>{{ contact.addresses.business.location.line2 }}</li>
+      <li>{{ contact.addresses.business.location.city }}</li>
+      <li>{{ contact.addresses.business.location.state }}</li>
+      <li>{{ contact.addresses.business.location.zip }}</li>
+    </ul>
+
+    <!--  Google Map integration -->
+    <div class="business__address-map" id="map">
+      {{ contact.addresses.business.map }}
+    </div>
+  </div>
+
+  <h5>Home</h5>
+  <div class="home">
+    <div class="home__phone">{{ contact.addresses.home.phone }}</div>
+
+    <div class="home__url">{{ contact.addresses.home.url }}</div>
+
+    <ul class="business__address">
+      <li>{{ contact.addresses.home.location.line1 }}</li>
+      <li>{{ contact.addresses.home.location.line2 }}</li>
+      <li>{{ contact.addresses.home.location.city }}</li>
+      <li>{{ contact.addresses.home.location.state }}</li>
+      <li>{{ contact.addresses.home.location.zip }}</li>
+    </ul>
+
+    <!--  Google Map integration -->
+    <div class="home__address-map" id="map">
+      {{ contact.addresses.home.map }}
+    </div>
+  </div>
+
+  <button class="button contact__edit" ng-click="editContact(contact)" ng-model="contact.editing"><a ui-sref="edit">Edit</button>
+  <button class="button contact__delete" ng-submit="deleteContact(contact)">Delete</button>
+
+</div>
