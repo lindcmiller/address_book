@@ -22,7 +22,7 @@
 // SINGLE CONTACT VIEWS - show detail, create, edit
 
     // should I be using contacts.contact? (parent/child)
-    .state('contact', {
+    .state('detail', {
       url: '/:contactId',
       templateUrl: 'templates/detail.html',
       controller: 'ContactCtrl'

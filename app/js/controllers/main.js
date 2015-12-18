@@ -35,7 +35,7 @@ addressBook.controller('ContactCtrl', function($scope, localStorageService) {
     var contacts = localStorageService.get('contacts');
     contacts.push(contact);
     localStorageService.set('contacts', contacts);
-    // after save, change view to list to show added contact? or detail view? 
+    // after save, change view to list to show added contact? or detail view?
   };
 
   $scope.editContact = function(contact) {
@@ -48,15 +48,26 @@ addressBook.controller('ContactCtrl', function($scope, localStorageService) {
     });
   };
 
-  $scope.updateContact = function(contact) {
+  $scope.updateContact = function(updatedContact) {
+    contact.editing = true;
     var contact = localStorageService.get('contact');
-    localStorageService.set(contact);
+    contact.replace(updatedContact);
+    localStorageService.set('contact', contact);
   };
 
   $scope.deleteContact = function(contact) {
     var contact = localStorageService.get('contact');
-    localStorageService.remove(contact);
+    return localStorageService.remove('contact');
 
+  };
+
+  function validatePhoneNumberFormat(input) {
+    var format = /^\(?([0-9]{3})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;
+    if(input.value.match(format)) {
+      return true;
+    } else {
+      console.log("Not a valid phone number. Please use this format: XXX-XXX-XXXX");
+    }
   };
 
 });

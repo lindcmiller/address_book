@@ -6,70 +6,71 @@ Must be able to persist to the server
 -->
 <div ui-view>
 
+  <a ui-sref="list"><< Return to Contacts</a>
+
 <h1>FORM</h1>
 
-<a ui-sref="list"><< Return to Contacts</a>
   <h6>* required field</h6>
-  <form class="contact" ng-model="contact">
+  <form ng-model="contact">
     <label>First Name: *</label>
-      <input type="text" class="name-first" ng-model="contact.name.first" required>
+      <input type="text" ng-model="contact.name.first" required>
     <label>Last Name: *</label>
-      <input type="text" class="name-last" ng-model="contact.name.last" required>
+      <input type="text" ng-model="contact.name.last" required>
 
     <div class="business">
       <label>Business Name:</label>
-        <input type="text" class="business__name" ng-model="contact.addresses.business.name">
+        <input type="text" ng-model="contact.addresses.business.name">
 
   <!-- must have 10 digits -->
-      <label>Business Phone Number:</label>
-        <input type="text" class="business__phone" ng-model="contact.addresses.business.phone">
+      <label>Business Phone Number: (XXX-XXX-XXXX)</label>
+        <input type="text" ng-model="contact.addresses.business.phone">
 
   <!-- Must have a valid URL structure (protocol :// host [:port] / path) -->
-      <label>Business Url:</label>
-        <input type="url" class="business__url" ng-model="contact.addresses.business.url">
+      <label>Business Url: (http://www.example.com)</label>
+        <input type="url" ng-model="contact.addresses.business.url">
 
-      <div class="business__address">
+      <div>
         <label>Street Line 1:</label>
-          <input type="text" class="business__address-line1" ng-model="contact.addresses.business.location.line1">
+          <input type="text" ng-model="contact.addresses.business.location.line1">
         <label>Street Line 2:</label>
-          <input type="text" class="business__address-line2" ng-model="contact.addresses.business.location.line2" >
+          <input type="text" ng-model="contact.addresses.business.location.line2" >
         <label>City:</label>
-          <input type="text" class="business__address-city" ng-model="contact.addresses.business.location.city">
+          <input type="text" ng-model="contact.addresses.business.location.city">
         <label>State:</label>
-          <input type="text" class="business__address-state" ng-model="contact.addresses.business.location.state">
+          <input type="text" ng-model="contact.addresses.business.location.state">
         <label>Zip Code:</label>
-          <input type="text" class="business__address-zip" ng-model="contact.addresses.business.location.zip">
+          <input type="text" ng-model="contact.addresses.business.location.zip">
       </div>
     </div>
 
     <div class="home">
-      <label>Home Phone Number:</label>
-        <input type="text" class="home__phone" ng-model="contact.addresses.home.phone" >
+      <label>Home Phone Number: (XXX-XXX-XXXX)</label>
+        <input type="text" ng-model="contact.addresses.home.phone" >
 
   <!-- Must have a valid URL structure (protocol :// host [:port] / path) -->
-      <label>Homepage Url:</label>
-        <input type="url" class="home__url" ng-model="contact.addresses.home.url" >
+      <label>Homepage Url: (http://www.example.com)</label>
+        <input type="url" ng-model="contact.addresses.home.url" >
 
   <!-- Must validate the address with [Lob API](https://lob.com/docs) -->
       <div class="home__address">
         <label>Street Line 1: *</label>
-          <input type="text" class="home__address-line1" ng-model="contact.addresses.home.location.line1" required>
+          <input type="text" ng-model="contact.addresses.home.location.line1" required>
         <label>Street Line 2:</label>
-          <input type="text" class="home__address-line2" ng-model="contact.addresses.home.location.line2">
+          <input type="text" ng-model="contact.addresses.home.location.line2">
         <label>City: *</label>
-          <input type="text" class="home__address-city" ng-model="contact.addresses.home.location.city" required>
+          <input type="text" ng-model="contact.addresses.home.location.city" required>
         <label>State: *</label>
-          <input type="text" class="home__address-state" ng-model="contact.addresses.home.location.state" required>
+          <input type="text" ng-model="contact.addresses.home.location.state" required>
         <label>Zip Code: *</label>
-          <input type="text" class="home__address-zip" ng-model="contact.addresses.home.location.zip" required>
+          <input type="text" ng-model="contact.addresses.home.location.zip" required>
       </div>
     </div>
 
-    <button type="submit" ng-click="addContact(contact)" ng-model="contact" class="button contact__save">Save</button>
+    <button type="submit" ng-click="validatePhoneNumberFormat(input) && addContact(contact)" ng-model="contact" class="button">Save</button>
   </form>
 
 <!-- Are these the same? -->
 <button type="submit" class="button contact__cancel" ng-submit="deleteContact(contact)">Cancel</button>
-<button class="button contact__delete" ng-submit="deleteContact(contact)" ng-show="contact.editing">Delete</button>
+<button type="submit" class="button" ng-submit="deleteContact(contact)" ng-show="contact.editing">Delete</button>
 
 </div>

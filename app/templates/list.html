@@ -4,18 +4,18 @@
   <h1>LIST</h1>
 
   <!-- <div ng-repeat="letter in alphabet" class="alphabetical-order"> -->
-  <div>
-    <ul ng-repeat="contact in contacts">
+  <ul>
+    <li ng-repeat="contact in contacts">
       <!-- Must be ordered by first name -->
-      <li class="name-first">{{ contact.name.first }}</li>
-      <li class="name-last">{{ contact.name.last }}</li>
+
+      <a ui-sref="detail">{{ contact.name.first }} {{ contact.name.last }}</a>
 
       <!-- Must be able to edit and delete a contact -->
 
-      <button class="button contact__edit" ng-submit="editContact(contact)" ui-sref="edit">Edit</button>
-      <button class="button contact__delete" ng-submit="deleteContact(contact)">Delete</button>
-    </ul>
+      <button class="button" ng-submit="editContact(contact)" ui-sref="edit">Edit</button>
+      <button class="button" ng-submit="deleteContact(contact)">Delete</button>
+    </li>
 
-  </div>
+  </ul>
 
 </div>

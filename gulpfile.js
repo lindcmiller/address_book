@@ -9,6 +9,7 @@ var paths = {
   compilePath: 'dist/',
   html: 'app/**/*.html',
   js: 'app/**/*.js',
+  css: 'app/**/*.css',
   dependencies: [
     'node_modules/angular/angular.js',
     'node_modules/angular-ui-router/build/angular-ui-router.js',
@@ -43,6 +44,16 @@ gulp.task('html', function () {
     .pipe(connect.reload());
 });
 
+// Copies our CSS files into the dist folder so that
+// they can be served up
+gulp.task('css', function () {
+  gulp
+    .src(paths.css)
+    .pipe(gulp.dest(paths.compilePath))
+    .pipe(connect.reload());
+});
+
+
 // Copies vendor files into the dist folder
 gulp.task('copy:vendor', function() {
   gulp
@@ -53,7 +64,7 @@ gulp.task('copy:vendor', function() {
 // "Compiles" the app. Since this app is pretty simple, we're mostly just
 // emptying the contents of a folder and copying over a bunch of files
 gulp.task('compile', function(callback) {
-  runSequence('clean', ['html', 'js', 'copy:vendor'], callback);
+  runSequence('clean', ['html', 'js', 'css', 'copy:vendor'], callback);
 });
 
 // Watches specific files in the app folder for changes

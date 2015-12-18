@@ -4,15 +4,15 @@
 
   <h1>DETAILS</h1>
 
-  <div class="name-first">{{ contact.name.last }}</div>
-  <div class="name-last">{{ contact.name.last }}</div>
+  <div>{{ contact.name.first }}</div>
+  <div>{{ contact.name.last }}</div>
 
   <h5>Business</h5>
   <div class="business">
-    <div class="business__name">{{ contact.addresses.business.name }}</div>
+    <div>{{ contact.addresses.business.name }}</div>
 
-    <div class="business__phone">{{ contact.addresses.business.phone }}</div>
-    <div class="business__url">{{ contact.addresses.business.url }}</div>
+    <div>{{ contact.addresses.business.phone }}</div>
+    <div>{{ contact.addresses.business.url }}</div>
 
     <ul class="business__address">
       <li>{{ contact.addresses.business.location.line1 }}</li>
@@ -23,18 +23,18 @@
     </ul>
 
     <!--  Google Map integration -->
-    <div class="business__address-map" id="map">
+    <div id="map">
       {{ contact.addresses.business.map }}
     </div>
   </div>
 
   <h5>Home</h5>
   <div class="home">
-    <div class="home__phone">{{ contact.addresses.home.phone }}</div>
+    <div>{{ contact.addresses.home.phone }}</div>
 
-    <div class="home__url">{{ contact.addresses.home.url }}</div>
+    <div>{{ contact.addresses.home.url }}</div>
 
-    <ul class="business__address">
+    <ul class="home__address">
       <li>{{ contact.addresses.home.location.line1 }}</li>
       <li>{{ contact.addresses.home.location.line2 }}</li>
       <li>{{ contact.addresses.home.location.city }}</li>
@@ -43,7 +43,7 @@
     </ul>
 
     <!--  Google Map integration -->
-    <div class="home__address-map" id="map">
+    <div id="map">
       {{ contact.addresses.home.map }}
     </div>
   </div>
