@@ -1,7 +1,7 @@
 (function () {
 var addressBook = angular.module('addressBook');
 
-addressBook.controller('ContactCtrl', function($scope, localStorageService) {
+addressBook.controller('ContactCtrl', function($scope, localStorageService, $stateParams) {
 
   $scope.contacts = [];
   var contacts = $scope.contacts;
@@ -33,6 +33,7 @@ addressBook.controller('ContactCtrl', function($scope, localStorageService) {
 
   $scope.addContact = function(contact) {
     var contacts = localStorageService.get('contacts');
+    contact.id = contacts.length;
     contacts.push(contact);
     localStorageService.set('contacts', contacts);
     // after save, change view to list to show added contact? or detail view?
@@ -46,6 +47,7 @@ addressBook.controller('ContactCtrl', function($scope, localStorageService) {
       }
       contact.editing = true;
     });
+
   };
 
   $scope.updateContact = function(updatedContact) {
@@ -57,8 +59,11 @@ addressBook.controller('ContactCtrl', function($scope, localStorageService) {
 
   $scope.deleteContact = function(contact) {
     var contact = localStorageService.get('contact');
-    return localStorageService.remove('contact');
-
+    $scope.contact = contacts.find(function(contact) {
+      if (contact.id === parseInt($stateParams.id)) {
+        localStorageService.remove('contact', contact);
+      };
+    });
   };
 
   function validatePhoneNumberFormat(input) {

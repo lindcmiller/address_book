@@ -1,18 +1,21 @@
-<div ui-view>
+<div ui-view >
 
   <a ui-sref="list"><< Return to Contacts</a>
 
   <h1>DETAILS</h1>
 
-  <div>{{ contact.name.first }}</div>
-  <div>{{ contact.name.last }}</div>
+  <ul>
+    <li>{{ contact.name.first }}</li>
+    <li>{{ contact.name.last }}</li>
+  </ul>
+
 
   <h5>Business</h5>
-  <div class="business">
-    <div>{{ contact.addresses.business.name }}</div>
+  <ul class="business">
+    <li>{{ contact.addresses.business.name }}</li>
 
-    <div>{{ contact.addresses.business.phone }}</div>
-    <div>{{ contact.addresses.business.url }}</div>
+    <li>{{ contact.addresses.business.phone }}</li>
+    <li>{{ contact.addresses.business.url }}</li>
 
     <ul class="business__address">
       <li>{{ contact.addresses.business.location.line1 }}</li>
@@ -26,13 +29,13 @@
     <div id="map">
       {{ contact.addresses.business.map }}
     </div>
-  </div>
+  </ul>
 
   <h5>Home</h5>
-  <div class="home">
-    <div>{{ contact.addresses.home.phone }}</div>
+  <ul class="home">
+    <li>{{ contact.addresses.home.phone }}</li>
 
-    <div>{{ contact.addresses.home.url }}</div>
+    <li>{{ contact.addresses.home.url }}</li>
 
     <ul class="home__address">
       <li>{{ contact.addresses.home.location.line1 }}</li>
@@ -46,9 +49,9 @@
     <div id="map">
       {{ contact.addresses.home.map }}
     </div>
-  </div>
+  </ul>
 
-  <button class="button contact__edit" ng-click="editContact(contact)" ng-model="contact.editing"><a ui-sref="edit">Edit</button>
+  <button class="button contact__edit" ng-click="editContact(contact)"><a ui-sref="edit">Edit</button>
   <button class="button contact__delete" ng-submit="deleteContact(contact)">Delete</button>
 
 </div>

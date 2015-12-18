@@ -23,9 +23,9 @@
 
     // should I be using contacts.contact? (parent/child)
     .state('detail', {
-      url: '/:contactId',
+      url: '/:id',
       templateUrl: 'templates/detail.html',
-      controller: 'ContactCtrl'
+      controller: 'DetailCtrl'
     })
 
     .state('new', {
@@ -35,7 +35,7 @@
     })
 
     .state('edit', {
-      url: '/:contactId/edit',
+      url: '/:id/edit',
       templateUrl: 'templates/form.html',
       controller: 'ContactCtrl'
     });

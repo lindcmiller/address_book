@@ -1,5 +1,6 @@
 
 contact: {
+  "id": 'id',
   "name": {
     "first": 'name.first',
     "last": 'name.last'
