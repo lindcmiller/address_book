@@ -11,7 +11,7 @@ Must be able to persist to the server
 <h1>FORM</h1>
 
   <h6>* required field</h6>
-  <form ng-model="contact">
+  <form ng-model="contact" ng-submit="addContact(contact)">
     <label>First Name: *</label>
       <input type="text" ng-model="contact.name.first" required>
     <label>Last Name: *</label>
@@ -23,7 +23,7 @@ Must be able to persist to the server
 
   <!-- must have 10 digits -->
       <label>Business Phone Number: (XXX-XXX-XXXX)</label>
-        <input type="text" ng-model="contact.addresses.business.phone">
+        <input type="text" ng-minlength=12 ng-maxlength=12 ng-model="contact.addresses.business.phone">
 
   <!-- Must have a valid URL structure (protocol :// host [:port] / path) -->
       <label>Business Url: (http://www.example.com)</label>
@@ -45,7 +45,7 @@ Must be able to persist to the server
 
     <div class="home">
       <label>Home Phone Number: (XXX-XXX-XXXX)</label>
-        <input type="text" ng-model="contact.addresses.home.phone" >
+        <input type="text" ng-minlength=12 ng-maxlength=12 ng-model="contact.addresses.home.phone" >
 
   <!-- Must have a valid URL structure (protocol :// host [:port] / path) -->
       <label>Homepage Url: (http://www.example.com)</label>
@@ -66,11 +66,11 @@ Must be able to persist to the server
       </div>
     </div>
 
-    <button type="submit" ng-click="validatePhoneNumberFormat(input) && addContact(contact)" ng-model="contact" class="button">Save</button>
+    <button type="submit" ng-model="contact" class="button">Save</button>
   </form>
 
 <!-- Are these the same? -->
-<button type="submit" class="button contact__cancel" ng-submit="deleteContact(contact)">Cancel</button>
-<button type="submit" class="button" ng-submit="deleteContact(contact)" ng-show="contact.editing">Delete</button>
+<button type="submit" class="button contact__cancel" ng-click="deleteContact(contact)">Cancel</button>
+<button type="submit" class="button" ng-click="deleteContact(contact)" ng-show="contact.editing">Delete</button>
 
 </div>
