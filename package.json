@@ -4,7 +4,8 @@
   "description": "An app for storing and viewing contacts.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/api.js"
   },
   "author": "",
   "devDependencies": {
@@ -13,23 +14,14 @@
     "del": "^2.2.0",
     "gulp": "^3.9.0",
     "gulp-connect": "^2.2.0",
-    "run-sequence": "^1.1.5",
-    "start": "node server/api.js"
+    "run-sequence": "^1.1.5"
   },
   "dependencies": {
-    "angular-ui-router": "^0.2.15",
-    "angular-local-storage": "^0.2.2",
-    "del": "^2.2.0",
-    "gulp-connect": "^2.2.0",
-    "angular": "^1.4.8",
-    "run-sequence": "^1.1.5",
-    "gulp": "^3.9.0",
     "body-parser": "^1.14.2",
     "cors": "^2.7.1",
     "express": "^4.13.3",
     "lodash": "^3.10.1",
     "node-uuid": "^1.4.7",
     "redis": "^2.4.2"
-  },
-  "license": "ISC"
+  }
 }
