@@ -1,7 +1,7 @@
 (function () {
 var addressBook = angular.module('addressBook');
 
-addressBook.controller('ContactCtrl', function($scope, localStorageService, $stateParams) {
+addressBook.controller('ContactCtrl', function($scope, ContactService) {
 
   $scope.contacts = [];
   var contacts = $scope.contacts;
@@ -20,50 +20,48 @@ addressBook.controller('ContactCtrl', function($scope, localStorageService, $sta
 
   var contact = $scope.contact;
 
-  $scope.loadContacts = function() {
-    $scope.contacts = localStorageService.get('contacts');
-
-    if ($scope.contacts === null) {
-      localStorageService.set('contacts', []);
-      $scope.loadContacts();
-    }
+  var loadContacts = function() {
+    ContactService.loadContacts()
+    .then(function(contacts) {
+      $scope.loaded = true;
+      $scope.contacts = contacts;
+    });
   };
 
-  $scope.loadContacts();
+  loadContacts();
 
   $scope.addContact = function(contact) {
-    var contacts = localStorageService.get('contacts');
     contact.id = contacts.length;
     contacts.push(contact);
-    localStorageService.set('contacts', contacts);
+    ContactService.addContact($scope.contact)
+      .then(function() {
+        loadContacts();
+      })
     // after save, change view to list to show added contact? or detail view?
   };
 
   $scope.editContact = function(contact) {
-    var contacts = localStorageService.get('contacts');
     contacts.forEach(function(contact) {
-      contact.editing = false;
       if(contact.editing == true) {
         contact.editing = false;
       }
       contact.editing = true;
     });
-
   };
-  
-  // $scope.updateContact = function(updatedContact) {
-  //   contact.editing = true;
-  //   var contact = localStorageService.get('contact');
-  //   contact.replace(updatedContact);
-  //   localStorageService.set('contact', contact);
-  // };
+
+  $scope.updateContact = function(contact) {
+    ContactService.updateContact(contact)
+      .then(function() {
+        contact.editing = false;
+        loadContacts();
+      });
+  };
 
   $scope.deleteContact = function(contact) {
-    var contacts = localStorageService.get('contacts')
-    .filter(function(c) {
-      return contact.id !== c.id;
-    });
-    localStorageService.set('contacts', contacts);
+    ContactService.deleteContact(contact)
+      .then(function() {
+        loadContacts();
+      });
   };
 
   // function validatePhoneNumberFormat(input) {

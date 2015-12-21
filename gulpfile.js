@@ -12,8 +12,7 @@ var paths = {
   css: 'app/**/*.css',
   dependencies: [
     'node_modules/angular/angular.js',
-    'node_modules/angular-ui-router/build/angular-ui-router.js',
-    'node_modules/angular-local-storage/dist/angular-local-storage.js'
+    'node_modules/angular-ui-router/build/angular-ui-router.js'
   ]
 };
 

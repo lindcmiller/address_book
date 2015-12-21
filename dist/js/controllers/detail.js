@@ -1,12 +1,13 @@
 (function () {
 var addressBook = angular.module('addressBook');
 
-addressBook.controller('DetailCtrl', function($scope, localStorageService, $stateParams) {
+  addressBook.controller('DetailCtrl', function($scope, $stateParams, ContactService) {
 
-  var contacts = localStorageService.get('contacts');
-  $scope.contact = contacts.find(function(contact) {
-    return contact.id === parseInt($stateParams.id);
+    var contacts = ContactService.loadContacts()
+    .then(function(contacts) {
+      $scope.contacts.find(function(contact) {
+        return $scope.contact.id === parseInt($stateParams.id);
+      });
+    });
   });
-});
-
 }());

@@ -1,10 +1,7 @@
 (function () {
   'use strict';
 
-  var addressBook = angular.module('addressBook', [
-   'ui.router',
-   'LocalStorageModule'
-  ]);
+  var addressBook = angular.module('addressBook', ['ui.router']);
 
   addressBook.config(function($stateProvider, $urlRouterProvider) {
 
@@ -21,20 +18,20 @@
 
 // SINGLE CONTACT VIEWS - show detail, create, edit
 
-    .state('detail', {
-      url: '/:contact:id',
-      templateUrl: 'templates/detail.html',
-      controller: 'DetailCtrl'
-    })
-
     .state('new', {
       url: '/new',
       templateUrl: 'templates/form.html',
       controller: 'ContactCtrl'
     })
 
+    .state('detail', {
+      url: '/:id',
+      templateUrl: 'templates/detail.html',
+      controller: 'DetailCtrl'
+    })
+
     .state('edit', {
-      url: '/:contact:id/edit',
+      url: '/:id/edit',
       templateUrl: 'templates/form.html',
       controller: 'ContactCtrl'
     });
