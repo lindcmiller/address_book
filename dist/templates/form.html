@@ -13,7 +13,7 @@ Must be able to persist to the server
   <h6>* required field</h6>
   <form ng-model="contact" ng-submit="addContact(contact)">
     <label>First Name: *</label>
-      <input type="text" ng-model="contact.name.first" required>
+      <input type="text" ng-model="{{contact.name.first}}" required>
     <label>Last Name: *</label>
       <input type="text" ng-model="contact.name.last" required>
 
@@ -67,6 +67,7 @@ Must be able to persist to the server
     </div>
 
     <button type="submit" ng-model="contact" class="button">Save</button>
+
   </form>
 
 <!-- Are these the same? -->

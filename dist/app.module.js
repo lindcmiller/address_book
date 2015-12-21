@@ -21,9 +21,8 @@
 
 // SINGLE CONTACT VIEWS - show detail, create, edit
 
-    // should I be using contacts.contact? (parent/child)
     .state('detail', {
-      url: '/:id',
+      url: '/:contact:id',
       templateUrl: 'templates/detail.html',
       controller: 'DetailCtrl'
     })
@@ -35,7 +34,7 @@
     })
 
     .state('edit', {
-      url: '/:id/edit',
+      url: '/:contact:id/edit',
       templateUrl: 'templates/form.html',
       controller: 'ContactCtrl'
     });

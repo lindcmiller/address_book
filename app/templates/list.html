@@ -4,7 +4,7 @@
   <h1>LIST</h1>
 
   <!-- <div ng-repeat="letter in alphabet" class="alphabetical-order"> -->
-    <ul ng-repeat="contact in contacts">
+    <ul ng-repeat="contact in contacts | orderBy: '+name.first'">
       <!-- Must be ordered by first name -->
 
       <li><a ui-sref="detail({ id: contact.id })">{{ contact.name.first }} {{ contact.name.last }}</a>

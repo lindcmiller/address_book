@@ -4,9 +4,20 @@ For the final project, you will build a fully featured contacts app in AngularJS
 
 ## Setup
 
+As an additional dependency, we need to install Redis.
+Redis is an in-memory key-value store.
+In-memory means it does not store data to disk during operation, which makes it very fast.
+Key-value stores are simple databases which only store a value and a key to look up that value.
+HTML5's local storage API is another example of a key-value store.
+Run `brew install redis` to install the database.
+Once it has installed, run `redis-server &` to start the database in the background.
+
 Make sure you're in the `address_book` directory, and run `npm install` to install dependencies.
 
 Once that's finished, you're ready to rock and roll.
+
+To start the server, run `npm start` in the console.
+This will run the server in the foreground, so you will need to open a new terminal in order to run the client.
 
 Let's try to serve up our Angular app. Run `gulp` in your terminal. You should see a message similar to Server started http://localhost:8080. Navigate to that URL in your browser and verify the app is working.
 

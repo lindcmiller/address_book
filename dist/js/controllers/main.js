@@ -50,7 +50,7 @@ addressBook.controller('ContactCtrl', function($scope, localStorageService, $sta
     });
 
   };
-  //
+  
   // $scope.updateContact = function(updatedContact) {
   //   contact.editing = true;
   //   var contact = localStorageService.get('contact');
