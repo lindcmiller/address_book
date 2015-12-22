@@ -1,5 +1,3 @@
-<!-- Toggles between New Contact & Edit Contact  -->
-
 <!--
 Must be able to cancel
 Must be able to persist to the server
@@ -11,11 +9,13 @@ Must be able to persist to the server
 <h1>FORM</h1>
 
   <h6>* required field</h6>
-  <form ng-model="contact" ng-submit="addContact(contact)">
-    <label>First Name: *</label>
-      <input type="text" ng-model="contact.name.first" required>
-    <label>Last Name: *</label>
-      <input type="text" ng-model="contact.name.last" required>
+  <!-- ng-change for update & ng-submit for add contact?  -->
+  <form ng-model="contact" ng-submit="newContact(contact)">
+      <label>First Name: *</label>
+<!-- ng value // ng model? both? to hold current value in field if it exists -->
+        <input type="text" ng-model="contact.name.first" ng-value="contact.name.first" required>
+      <label>Last Name: *</label>
+        <input type="text" ng-model="contact.name.last" required>
 
     <div class="business">
       <label>Business Name:</label>
@@ -69,9 +69,5 @@ Must be able to persist to the server
     <button type="submit" ng-model="contact" class="button">Save</button>
 
   </form>
-
-<!-- Are these the same? -->
-<button type="submit" class="button" ng-click="deleteContact(contact)">Cancel</button>
-<button type="submit" class="button" ng-click="deleteContact(contact)" ng-show="contact.editing">Delete</button>
 
 </div>

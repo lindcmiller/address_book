@@ -3,11 +3,13 @@ var addressBook = angular.module('addressBook');
 
   addressBook.controller('DetailCtrl', function($scope, $stateParams, ContactService) {
 
-    var contacts = ContactService.loadContacts()
-    .then(function(contacts) {
-      $scope.contacts.find(function(contact) {
-        return $scope.contact.id === parseInt($stateParams.id);
+    var loadContactDetail = function() {
+      ContactService.loadContactDetail($stateParams.id)
+      .then(function(contact) {
+        $scope.loaded = true;
+        $scope.contact = contact;
       });
-    });
+    };
+    loadContactDetail();
   });
 }());

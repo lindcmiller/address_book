@@ -20,7 +20,7 @@
 
     .state('new', {
       url: '/new',
-      templateUrl: 'templates/form.html',
+      templateUrl: 'templates/new.html',
       controller: 'ContactCtrl'
     })
 
@@ -32,7 +32,7 @@
 
     .state('edit', {
       url: '/:id/edit',
-      templateUrl: 'templates/form.html',
+      templateUrl: 'templates/edit.html',
       controller: 'ContactCtrl'
     });
 

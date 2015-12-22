@@ -81,6 +81,18 @@ app.put('/:id', function (req, res) {
   });
 });
 
+app.delete('/:id', function (req, res) {
+  client.hget('contacts', req.params.id, function (err, reply) {
+    var contact = JSON.parse(reply);
+
+    client.hdel('contacts', req.params.id, function (err, reply) {
+      res.send({
+        contact: contact
+      });
+    });
+  });
+});
+
 var server = app.listen(3000, function () {
   var host = server.address().address;
   var port = server.address().port;

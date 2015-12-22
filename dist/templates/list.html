@@ -7,11 +7,11 @@
     <ul ng-repeat="contact in contacts | orderBy: '+name.first'">
       <!-- Must be ordered by first name -->
 
-      <li><a ui-sref="detail({ id: contact.id })">{{ contact.name.first }} {{ contact.name.last }}</a>
+      <li><a ng-click="loadContactDetail(contact)" ui-sref="detail({ id: contact.id })">{{ contact.name.first }} {{ contact.name.last }}</a>
 
       <!-- Must be able to edit and delete a contact -->
 
-      <button class="button" ng-click="editContact(contact)" ui-sref="edit">Edit</button>
+      <button class="button" ng-click="editContact(contact)" ui-sref="edit" >Edit</button>
       <button class="button" ng-click="deleteContact(contact)">Delete</button>
     </li>
 

@@ -1,7 +1,7 @@
 (function () {
 var addressBook = angular.module('addressBook');
 
-addressBook.controller('ContactCtrl', function($scope, ContactService) {
+addressBook.controller('ContactCtrl', function($scope, $stateParams, ContactService) {
 
   $scope.contacts = [];
   var contacts = $scope.contacts;
@@ -30,10 +30,10 @@ addressBook.controller('ContactCtrl', function($scope, ContactService) {
 
   loadContacts();
 
-  $scope.addContact = function(contact) {
+  $scope.newContact = function(contact) {
     contact.id = contacts.length;
     contacts.push(contact);
-    ContactService.addContact($scope.contact)
+    ContactService.newContact($scope.contact)
       .then(function() {
         loadContacts();
       })
@@ -57,8 +57,8 @@ addressBook.controller('ContactCtrl', function($scope, ContactService) {
       });
   };
 
-  $scope.deleteContact = function(contact) {
-    ContactService.deleteContact(contact)
+  $scope.deleteContact = function(id) {
+    ContactService.deleteContact($stateParams.id)
       .then(function() {
         loadContacts();
       });

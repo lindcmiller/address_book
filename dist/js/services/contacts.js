@@ -13,7 +13,16 @@ addressBook.service('ContactService', function($http) {
     });
   };
 
-  this.addContact = function(contact) {
+  this.loadContactDetail = function(id) {
+    return $http.get('http://localhost:3000/' + id)
+    .then(function(response) {
+      return response.data.contact;
+    }, function(err) {
+      console.log("Cannot load details of this contact.");
+    });
+  };
+
+  this.newContact = function(contact) {
     return $http.post('http://localhost:3000/', {
       'contact': contact
     }).catch(function(err) {
@@ -28,8 +37,8 @@ addressBook.service('ContactService', function($http) {
     });
   };
 
-  this.deleteContact = function(contact) {
-    return $http.delete('http://localhost:3000/' + contact.id)
+  this.deleteContact = function(id) {
+    return $http.delete('http://localhost:3000/' + id)
     .catch(function(err) {
       console.log("Could not delete this contact.");
     });

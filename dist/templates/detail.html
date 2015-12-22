@@ -4,52 +4,50 @@
 
   <h1>DETAILS</h1>
 
-  <ul>
-    <li>{{ contact.name.first }}</li>
-    <li>{{ contact.name.last }}</li>
-  </ul>
-
+<ul>
+    <li>{{ contact.name.first }} {{ contact.name.last }}</li>
 
   <h5>Business</h5>
-  <ul class="business">
+  <div class="business">
     <li>{{ contact.addresses.business.name }}</li>
 
     <li>{{ contact.addresses.business.phone }}</li>
     <li>{{ contact.addresses.business.url }}</li>
 
-    <ul class="business__address">
+    <div class="business__address">
       <li>{{ contact.addresses.business.location.line1 }}</li>
       <li>{{ contact.addresses.business.location.line2 }}</li>
       <li>{{ contact.addresses.business.location.city }}</li>
       <li>{{ contact.addresses.business.location.state }}</li>
       <li>{{ contact.addresses.business.location.zip }}</li>
-    </ul>
+    </div>
 
     <!--  Google Map integration -->
     <div id="map">
       {{ contact.addresses.business.map }}
     </div>
-  </ul>
+  </div>
 
   <h5>Home</h5>
-  <ul class="home">
+  <div class="home">
     <li>{{ contact.addresses.home.phone }}</li>
 
     <li>{{ contact.addresses.home.url }}</li>
 
-    <ul class="home__address">
+    <div class="home__address">
       <li>{{ contact.addresses.home.location.line1 }}</li>
       <li>{{ contact.addresses.home.location.line2 }}</li>
       <li>{{ contact.addresses.home.location.city }}</li>
       <li>{{ contact.addresses.home.location.state }}</li>
       <li>{{ contact.addresses.home.location.zip }}</li>
-    </ul>
+    </div>
 
     <!--  Google Map integration -->
     <div id="map">
       {{ contact.addresses.home.map }}
     </div>
-  </ul>
+  </div>
+</ul>
 
   <button class="button" ng-click="editContact(contact)"><a ui-sref="edit">Edit</button>
   <button class="button" ng-submit="deleteContact(contact)">Delete</button>
